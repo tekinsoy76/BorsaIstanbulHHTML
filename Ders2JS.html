@@ -1,0 +1,431 @@
+<html>
+    <head>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    </head>
+    <body>
+        <script lang="JavaScript" text="text/javascript">
+            // Basit degisken ve yapilarim
+            var isim = "Emre"; //string, yazilari alabilen veri tipi
+            var rakam = 123; //number, rakamlari tutan veri tipim
+            var varmiYokmu = true; // boolean, true yada false (1 veya 0) olarak veri tutan veri tipim
+            isim = "Ahmet";
+            var yazi = "Borsa Istanbul \"Maslak\" adresinde yer almaktadir.";
+            yazi = 'Borsa Istanbul "Maslak" adresinde yer almaktadir.';
+            yazi = 'Borsa Istanbul Maslak\'da yer almaktadir.';
+            var dosyaAdresi = 'C:\\Users\\Desktop\\Ders1';
+            console.log(dosyaAdresi);
+            var dilekce = '\tSayin Yetkili, \t\r\nDilekcemin isleme konmasini rica ederim. \r\n\r\nSaygilarimla, \r\nImza Ahmet Aydin';
+            //alert(dilekce);
+            /* escape character parametreleri
+            /t : tab
+            /r : return
+            /n : new line
+            /b : backspace
+            /v : vertical tab
+            */ 
+
+            var sayi1 = 12;
+            var sayi2 = 24;
+            var sayi1Sayi2denBuyukmu = sayi1 > sayi2;
+            // & and: ve
+            // | or: veya
+            if (sayi1 > sayi2) {
+                console.log(sayi1 + " buyuktur " + sayi2 + " sayisindan");
+            }
+            else if (sayi2 > sayi1)
+            {
+                console.log(sayi2 + " buyuktur " + sayi1 + " sayisindan");
+            }
+            else{
+                console.log(sayi1 + ", " + sayi2 +" ile esittir");
+            }
+
+            var toplam = sayi1 + sayi2;
+            var fark = sayi1 - sayi2;
+            var carpim = sayi1 * sayi2;
+            var bolum = sayi1 / sayi2;
+            // sayi1 ifadesini 10 arttirmak istiyorum
+            sayi1 = sayi1 + 10;
+            // ustteki satirin kisa yazimi:
+            sayi1 += 10;
+
+            // sayi1 i 3 katina cikartmak istiyoruz:
+            sayi1 *= 3;
+
+            // sayi1 i 1 arttirmak istorum:
+            sayi1 = sayi1 + 1;
+            sayi1 += 1;
+            sayi1++;
+
+            // sayi1  1 azalmak istiyouz
+            sayi1 = sayi1 - 1;
+            sayi1 -= 1;
+            sayi1--;
+
+            sayi = 10;
+            console.log(sayi++);
+            console.log(++sayi);
+
+            var birlestirmeler1 = "2" + "3"; //23
+            var birlestirmeler2 = 12 + 2 + "5" + 2;// 1452
+            var birlestirmeler3 = "2" + 5 + 8; //258
+
+            // Modern matematik islemlerimizi Math nesnesine ait metodlar ile yapabiliriz.
+            var besSayisininKupu = Math.pow(5, 3);
+
+            function getHitap(isim, soyisim){
+                return "Sayin " + isim + ' ' + soyisim;
+            }
+
+            var hitap = getHitap("Emre");// Sayin Emre Tekinsoy
+            console.log(hitap);
+
+            var liste = [];
+            console.log(liste);
+            console.dir(liste);
+
+            var isimler = ["Ali", "Ozan", "Zeynep"];
+            var ikinciEleman = isimler[1]; //Ozan
+            isimler[1] = "Recep";
+            console.log(isimler);
+
+            isimler[25] = "Emre";
+            console.log(isimler);
+
+            var otuzuncu = isimler[30];
+            console.log(otuzuncu);
+
+            var listeUzunlugu = isimler.length; // length sayma sayisi ile olan eleman sayisini verir: INDEX i degil
+            console.log("lemena sayisi:" + listeUzunlugu);
+            var sonuncuEleman = isimler[isimler.length - 1];
+            var sonuncuEleman = isimler[-1];
+            console.log(sonuncuEleman);
+
+            // eger dirak baska bir deger atamasi yapmaya calisirsam o nesneye (ture) donusur
+            // burada Array bir variable oldu:
+            //isimler = "atyfsdy";
+            //console.log(isimler);
+
+            isimler = ["Ali", "Veli", "Zeynep", "Ozan", "Burcu"];
+            var isimlerTxt = isimler.toString(); // Ali,Veli,Zeynep,Ozan,Burcu
+            console.log(isimlerTxt);
+
+            isimler.push("Abdullah"); //  ["Ali", "Veli", "Zeynep", "Ozan", "Burcu", "Abdullah"];
+
+            isimlerTxt = isimler.join(': '); // Ali: Veli: Zeynep: Ozan: Burcu: Abdullah
+            console.log(isimlerTxt);
+
+            var sonuncuEleman = isimler.pop(); // sonuncu elemani doner VE listeden kaldirir
+
+            var ilkEleman = isimler.shift(); // ilk elemani doner VE listeden siler
+            console.log(sonuncuEleman);
+            console.log(ilkEleman);
+            console.log(isimler);
+
+            isimler.unshift(ilkEleman); // listenin basina eleman ekler
+            console.log(isimler);
+
+            var elemanlar = ["Deniz", "Gamze", "Hasan", "Levent"];
+            var tumIsimler = isimler.concat(elemanlar); // iki veya daha fazla Array i birlestirmek icin.
+            console.log(tumIsimler);
+
+            //var deneme = elemanlar + isimler;
+            //console.log(deneme);
+
+            // splice in calismasi:
+            // 2.index den basla, 1 elemani sil, verdigim elemanlari tam o noktaya ekle
+            elemanlar.splice(2, 1, "Zeynep", "Ziya");
+            console.log(elemanlar);
+            
+            var ziya = elemanlar.slice(3,4);
+            console.log(ziya);
+            console.log(elemanlar);
+            // Belli bir elemanin index ini bulmak:
+            var gamzeIndex = elemanlar.indexOf('Gamze');
+            console.log("Gamze:" + gamzeIndex);
+            // Eger aradigimiz dizi icerisinde yok ise: -1 doner
+            var emreIndex = elemanlar.indexOf('Emre');
+            console.log("Emre:" + emreIndex);
+            // 3. indexden itibaren, 0 eleman silerek, Bu 3 ismi ekledik:
+            elemanlar.splice(3, 0, "Zeynep", "Gamze", "Huseyin");
+            console.log(elemanlar);
+
+            // sonuncu Gamze in index i
+            console.log(elemanlar.lastIndexOf("Gamze"));
+            // 1. yi atlayip bir sonraki Gamze'in index i
+            console.log(elemanlar.indexOf("Gamze", gamzeIndex + 1) );
+
+            // diziyi siraya dizmek
+            console.log(elemanlar.sort()); // alfabetik olarak A-Z (sort dizinin kendisini de degistirir)
+            console.log(elemanlar.reverse()); // var olan dizinin elemanlarini tersine cevirdik
+
+            // sort number dizilerde de alfabetik diziyormus gibi (matematiksel olarak degil) davranir:
+            var sayilar = [22, 8, 89, 1, 246, 1043]
+            console.log(sayilar.sort()); // 1, 1043, 22, 246, 8, 86
+
+            // String ler icin fonksiyonlar:
+            var text = "0123456789";
+            var ucIndexliHarfi = text[3]; // 3
+            console.log(ucIndexliHarfi);
+            var karakter = text.charAt(3); //3
+            console.log(karakter);
+
+            // slice ve substring baslangic ve bitis index ini alir:
+            console.log(text.slice(2, 5)); // 234
+            console.log(text.substring(2,5)); // 234
+            // substr ise baslangic index i , uzunluk alir
+            console.log(text.substr(2, 3)); // 234
+
+            console.log("5 in indexi: " + text.indexOf("5"));
+            
+            console.log("C nin indexi: " + text.indexOf("C"));
+
+            var adsoyad = "Mustafa Emre Tekinsoy";
+            var kod = "8126326";
+            var magaza = "Vatan Computer";
+            var sms = "Sayin " + adsoyad + ", " + magaza + " magazasindan yapmis olgunuz isleminiz icin, guvenlik kodunuz 8888." + kod + " seri numarali islem.";
+            
+            var kodunuzIndex = sms.indexOf("kodunuz");
+            var kodunuzUzunluk = "kodunuz ".length;
+            var alisverisKodu = sms.substr(kodunuzIndex + kodunuzUzunluk, 4); //8888
+            console.log("Alisveris kodu: " + alisverisKodu);
+
+            text = "Borsa Istanbul istinye";
+            var kucukHarf = text.toLowerCase();
+            var buyukHarf = text.toUpperCase();
+            console.log(kucukHarf + " " + buyukHarf);
+
+
+            text = "  mustafa          emre       tekinsoy      ";
+            var temizVer = text.trim();
+            console.log("Text uzunluk:" + text.length + ", Temiz uzunluk:" + temizVer.length + " ; " + temizVer);
+            var baslangiciTemiz = text.trimStart();
+            console.log("Text uzunluk:" + text.length + ", Temiz uzunluk:" + baslangiciTemiz.length + " ; " + baslangiciTemiz);
+            var sonuTemiz = text.trimEnd();
+            console.log("Text uzunluk:" + text.length + ", Temiz uzunluk:" + sonuTemiz.length + " ; " + sonuTemiz);
+
+            text = "Bu egitimi verecek olan: Ahmet Aydin.";
+            text = text.replace("Ahmet Aydin", "Emre Tekinsoy");
+            console.log(text);
+
+            var sayi = 6;
+            while (sayi < 10){
+                sayi++;
+            }
+            text = "  mustafa          emre       tekinsoy      ";
+            var karakterler = text.trim().split(" ");
+            text = karakterler.join(" ");
+            console.log(text);
+
+            text = text.trim();
+            while (text.indexOf("  ") > -1)
+            {
+                text = text.replace("  ", " ");
+            }
+            console.log(text);
+
+            // Tarih fonksiyonlarim:
+            var tarih1 = new Date();
+            var tarih2 = new Date("2024-06-07 16:30");
+            var gun = 23; var ay = 10; yil = 2023;
+            var tarih3 = new Date(yil, ay - 1, gun); // Ay lar JS de 0dan baslar
+            console.log(tarih1);
+            console.log(tarih2);
+            console.log(tarih3);
+
+            console.log(tarih1.toDateString());
+            console.log(tarih1.toUTCString());
+            console.log(tarih1.getFullYear());
+            console.log(tarih1.getMonth());
+            
+            console.log(tarih1.getDate());
+            console.log(tarih1.getDay());// haftanin hangi gunu
+            console.log(tarih1.getHours());
+
+            tarih1 = new Date('2024-06-02');
+            console.log(tarih1.getDay());
+
+        </script>
+
+        <div>
+            <p>DOM: Document Object Model</p>
+            <label id="LabelIsim">Ahmet Aydin</label>
+            <br/>
+            <div id="container">
+                <h2>Bu bir baslik</h2>
+                <p>Bu da bir paragraf</p>
+            </div>
+            <br/>
+            <label name="labelOrnek">Bu bir ornek label</label>
+            <a href="#" class="linkClass">Bu bir link</a>
+            <br/>
+            <input type="text" value="bu bir textbox" id="txtBoxIsim"/>
+            <ul>
+                <li><a href="#1" class="menuLink">link 1</a></li>
+                <li><a href="#2" class="menuLink">link 2</a></li>
+                <li><a href="#3" class="menuLink">link 3</a></li>
+                <li><a href="#4" class="menuLink">link 4</a></li>
+                <li><a href="#5" class="menuLink">link 5</a></li>
+            </ul>
+            <hr/>
+            <div>
+                <a href="#" class="linkClass">Bu ikinci bir link</a>
+            </div>
+            <br/><br/>
+            <button id="Button" class="btn btn-success">baslat</button>
+            <br/>
+            <button id="Button2" class="btn btn-primary" onclick="buton2Olayi()">baslat 2</button>
+        </div>
+        <script src="https://code.jquery.com/jquery-3.7.1.min.js" crossorigin="anonymous" ></script>
+        <script>
+
+            var label = document.getElementById("LabelIsim");
+            console.log(label);
+            console.log(label.innerHTML);
+            label.innerHTML = "Bu label in yazisi degisti";
+            console.log(document.getElementById("container").innerHTML);
+
+            var divIcerik = document.getElementById("container").innerHTML;
+            divIcerik += "<br/><h3>Bu yeni eklendi</h3>"; 
+            document.getElementById("container").innerHTML = divIcerik;
+
+            var sadeceYazilar = document.getElementById("container").innerText;
+            console.log(sadeceYazilar);
+
+            var inputText = document.getElementById("txtBoxIsim").value;
+            console.log(inputText);
+
+            document.getElementById("Button").onclick = function(){
+                alert("Butona tiklandi");
+            }
+
+            function buton2Olayi(){
+                alert("Buton 2 tiklandi");
+            }
+
+            var sayfamdakiLabellar = document.getElementsByTagName("label");
+            console.log(sayfamdakiLabellar);
+            var linkClassSinifinaSahipOlanlar = document.getElementsByClassName("linkClass");
+            console.log(linkClassSinifinaSahipOlanlar);
+            linkClassSinifinaSahipOlanlar = document.querySelector(".linkClass");
+            console.log(linkClassSinifinaSahipOlanlar);
+
+            var ikinciLink = document.querySelector("div div a.linkClass");
+            console.log(ikinciLink.innerHTML);
+
+            console.log(document.getElementsByClassName("menuLink"));
+            document.querySelector(".menuLink").onclick = function(){
+                alert("tiklandi");
+            }
+
+            document.getElementsByClassName("menuLink").onclick = function(){
+                console.log("linke tiklandi");
+                console.log(this);
+            }
+
+            // JQuery
+            console.log($("#LabelIsim").html()); // JQuery ile id sine gore yakalamak
+            console.log($("input").val()); // JQuery ile tag name ile yakalamak
+            console.log($(".menuLink").html()); // class adina gore yakalamak
+            $(".menuLink").click(function(){
+                console.log($(this).html());
+                console.log(this.innerHTML);
+            });
+
+        </script>
+
+<hr/>
+        <div class="row" style="margin: 0 12px;">
+            <div class="col-md-6">
+                <form>
+                    <div class="form-group">
+                        <label class="form-label">Isim soyisim</label>
+                        <input type="text" id="name" placeholder="Lutfen isminizi yaziniz" class="form-control"/>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">E-Posta</label>
+                        <input type="email" id="email" placeholder="Lutfen e-posta yaziniz" class="form-control"/>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Yasiniz</label>
+                        <input type="number" id="yas" placeholder="Lutfen yasinizi yaziniz" class="form-control"/>
+                    </div>
+                    <div>
+                        <input type="button" value="Kaydet" class="btn btn-warning" id="btnKaydet"/>
+                    </div>
+                    <div>
+                        <input type="button" value="Listele" class="btn btn-info" id="btnListele"/>
+                    </div>
+                </form>
+            </div>
+            <div id="liste" class="col-md-6" style="background-color: beige;">
+                <ul></ul>
+            </div>
+        </div>
+        <hr/>
+        <form>
+            <div class="form-group">
+                <label class="form-label">E-Posta</label>
+                <input type="email" id="email2" class="form-control">
+            </div>
+            <div class="form-group">
+                <label class="form-label">Adres</label>
+                <input type="text" id="adres" class="form-control">
+            </div>
+            <div class="form-group">
+                <input type="button" value="Adresi kaydet" id="btnAdres"/>
+            </div>
+        </form>
+        <script>
+            var liste = [];
+            $('#btnAdres').click(function(){
+                var eposta = $("#email2").val();
+                for (var indexUye = 0; indexUye < liste.length; indexUye++){
+                    if (liste[indexUye].EPosta == eposta){
+                        liste[indexUye].Adres = $("#adres").val();
+                        break;
+                    }
+                }
+                console.dir(liste);
+                console.log(JSON.stringify(liste));
+            });
+
+            $("#btnListele").click(function(){
+                var content = "";
+                for (var indexUye = 0; indexUye < liste.length; indexUye++) {
+                     content += "<li>" + liste[indexUye].Ozet() + "</li>\r\n";
+                }
+                $("#liste ul").html(content);
+            });
+
+            $("#btnKaydet").click(function(){
+                var isim = $("#name").val();
+                var email = $("#email").val();
+                var yas = $("#yas").val();
+
+                // object kullanimi:
+                var uye = {
+                    Isim: isim,
+                    EPosta: email,
+                    Yas: yas,
+                    Ozet: function(){
+                        return this.Isim + " (" + this.EPosta + "), Yas:" + this.Yas
+                    }
+                };
+                uye.ID = 1234;
+                var deneme = uye.Ozet();
+
+                liste.push(uye);
+            });// click sonu
+
+            var array = [];
+            for (var index = 0; index < array.length; index++) {
+                var element = array[index];
+                
+            }
+        </script>
+
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    </body>
+</html>

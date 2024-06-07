@@ -1,0 +1,82 @@
+h2 {
+    font-size: 30px;
+}
+
+.yesilyazi {
+    font-weight: bold;
+    color:darkslategray; 
+    font-style: italic;
+}
+
+.plan{
+    color: darkslategray;
+}
+
+ table.plan, .plan th, .plan td{
+    border: 1px solid navy;
+    border-collapse: collapse;
+}
+.plan th{
+    background-color: coral;
+}
+.plan td.sutun{
+    background-color: coral;
+    font-size: small;
+}
+.plan td{
+    width: 16vw;
+    background-color: antiquewhite;
+    height: 40px;
+}
+
+table.takvim{
+    border: 1px solid maroon;
+    border-spacing: 6px;
+}
+
+.takvim td{
+    width: 80px;
+    height: 40px;
+    border: 1px solid navy;
+    border-radius: 4px;
+    padding: 4px 6px;
+    padding-right: 8px;
+}
+
+table.gorevler td{
+    width: 180px;
+}
+table.gorevler tr:nth-child(even){
+    /*background-color: aquamarine;*/
+}
+
+table.gorevler td:nth-child(odd){
+    background-color:aquamarine;
+}
+
+form div{
+    margin:4px;
+}
+form input{
+    width: 200px;
+
+}
+form div{
+    width: 700px;
+}
+form label{
+    display: inline-block;
+    width: 200px;
+}
+
+a{
+    font-size: larger;
+}
+a.solidlink{
+    color: darkred;
+    text-decoration: none;
+}
+
+img{
+    margin: 12px;
+}
