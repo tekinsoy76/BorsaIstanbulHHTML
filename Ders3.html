@@ -25,9 +25,14 @@
                         </div>
                     </form>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-12">
                     <div class="liste"></div>
                     <input type="button" id="btnForm" class="btn btn-outline-danger" value="Kaydedilen alanlardan bir form olustur">
+                </div>
+                <div class="col-md-8">
+                    <form id="dinamikForm">
+
+                    </form>
                 </div>
             </div>
         </div>
@@ -48,7 +53,134 @@
                 content += kontrol.name + " (" + kontrol.type + ")<br/>"
                 $('div.liste').html(content);
             });
+
+            $('#btnForm').click(function() {
+                // Yontem1
+                var content = "";
+                for(var index = 0; index < kontrolListesi.length; index++){
+                    content += '<div class="form-group">';
+                    content += '<label class="form-label">' + kontrolListesi[index].name + '</label>';
+                    content += '<input type="' + kontrolListesi[index].type + '" class="form-control" name="' + kontrolListesi[index].name + '"/>';
+                    content += '</div>'
+                }
+                content += '<div class="form-group">';
+                    content += '<input type="submit" value="KAYDET" class="btn btn-outline-success" onclick="butonFonksiyon()"/>';
+                    content += '</div>';
+                //$('#dinamikForm').html(content);
+
+                    //Yontem 2
+                    for (var index = 0; index < kontrolListesi.length; index++){
+                        var divElement = document.createElement('div');
+                        divElement.className = "form-group";
+                        var labelElement = document.createElement('label');
+                        labelElement.className = "form-label";
+                        labelElement.innerHTML = kontrolListesi[index].name;
+                        divElement.appendChild(labelElement);
+                        var inputElement = document.createElement("input");
+                        inputElement.type = kontrolListesi[index].type;
+                        inputElement.className = "form-control";
+                        divElement.appendChild(inputElement);
+                        document.getElementById("dinamikForm").appendChild(divElement);
+                    }
+                    var butonElement = document.createElement("input");
+                    butonElement.value = "KAYDET";
+                    butonElement.type = "button";
+                    butonElement.className = "btn btn-outline-success";
+                    butonElement.addEventListener("click", butonFonksiyon);
+                    document.getElementById("dinamikForm").appendChild(butonElement);
+
+                    function butonFonksiyon(){
+                        alert("Butona tiklandi");
+                    }
+            });
         </script>
+<br/><br/>
+<h2>Window (screen) nesnesi</h2>
+<ul>
+    <li>Window genisligi: <span id="spanWinWidth"></span></li>
+    <li>Window yuksekligi: <span id="spanWinHeight"></span></li>
+    <li>Ekranin genisligi: <span id="spanWidth"></span></li>
+    <li>Ekranin yuksekligi: <span id="spanHeight"></span></li>
+    <li>Ekranin kullanilabilir genisligi: <span id="spanAvailableWidth"></span></li>
+    <li>Ekranin kullanilabilir yuksekligi: <span id="spanAvailableHeight"></span></li>
+    <li>Ekranin renk derinligi: <span id="spanColor"></span></li>
+    <li>Ekranin pixel derinligi: <span id="spanPixel"></span></li>
+</ul>
+<div class="row">
+    <button type="button" id="back">◄</button>
+    <button type="button" id="forward">►</button>
+</div>
+<script>
+    document.getElementById("spanWinWidth").innerHTML = window.innerWidth;
+    document.getElementById("spanWinHeight").innerHTML = window.innerHeight;
+    document.getElementById("spanWidth").innerHTML = screen.width;
+    document.getElementById("spanHeight").innerHTML = screen.height;
+    document.getElementById("spanAvailableWidth").innerHTML = screen.availWidth;
+    document.getElementById("spanAvailableHeight").innerHTML = screen.availHeight;
+    document.getElementById("spanColor").innerHTML = screen.colorDepth;
+    document.getElementById("spanPixel").innerHTML = screen.pixelDepth;
+    document.getElementById("back").onclick = function(){
+        history.back();
+    }
+    document.getElementById("forward").onclick = function(){
+        history.forward()
+    }
+</script>
+
+<hr/>
+<h2>AJAX</h2>
+<script>
+    // Javascript ile AJAX
+    var xhttp = new XMLHttpRequest();
+    /*xhttp.onload = function(){
+        document.getElementById("cevap").innerHTML = this.responseText;
+    }*/
+
+    // Ready state
+    // 0: istek beklemede
+    // 1: server baglantisi saglandi
+    // 2: istek gonderildi
+    // 3: cevap bekleniyor
+    // 4: cevap alindi
+    xhttp.onreadystatechange = function(){
+        if (this.readyState == 4 && this.status == 200){
+            document.getElementById("cevap").innerHTML = this.responseText;
+        }
+    }
+    xhttp.open("GET", "gitmek istedigim server adres");
+    xhttp.send('gondermek istedigim veri');
+
+// JQuery ile AJAX
+$.ajax({
+    type: "GET",
+    url: "server adresi",
+    data: "veri",
+    success: function(cevap){
+        document.getElementById("cevap").innerHTML = cevap;
+    },
+    error: function(hata){
+        alert(hata);
+    }
+}); // ajax sonu
+</script>
+<script>
+    // Burasi .net ortaminda test ettigimiz ajax ornegi
+    $('#btnSend').click(function () {
+        var isim = $('#name').val();
+        var soyisim = $('#sirname').val(); 
+        var yas = $('#age').val();
+        $.ajax({
+            type: "POST",
+            url: "/home/formcreate",
+            data: {Isim: isim, Soyisim: soyisim, Yas: yas},
+            success: function (cevap) {
+                $("#basvuruForm").hide('slow');
+                $('#sonucP').html('Sayin ' + cevap.isimSoyisim + ', basvurunuz alinmistir.');
+            }
+        });
+    });
+</script>
+
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     </body>
 </html>

@@ -1,0 +1,102 @@
+<html>
+    <head>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.7.1.min.js" crossorigin="anonymous" ></script>
+    </head>
+    <body>
+        <button type="button" id="btnHide" class="btn btn-primary">Yaziyi kaldir</button>
+        <br/><br/>
+        <button type="button" id="btnShow" class="btn btn-primary">Yaziyi goster</button>
+        <br/><br/>
+        <button type="button" id="btnOnOff" class="btn btn-danger">Yazi OFF</button>
+        <br/><br/>
+        <p class="yazi">Burasi ornek yazimiz</p>
+
+        <script>
+            $('#btnHide').click(function(){
+                //$('p.yazi').hide();
+                //$('p.yazi').hide('fast');
+                $('p.yazi').hide(400);
+            });
+
+            $('#btnShow').click(function() {
+                //$('p.yazi').show();
+                //$('p.yazi').show('slow');
+                $('p.yazi').show(2000);
+            });
+
+            var yaziGorunur = true;
+            $('#btnOnOff').click(function() {
+                $('p.yazi').toggle(1000, function(){
+                    if (yaziGorunur)
+                    {
+                        $('#btnOnOff').html('yazi ON');
+                        $('#btnOnOff').removeClass('btn-danger');
+                        $('#btnOnOff').addClass('btn-success');
+                        yaziGorunur = false;
+                    }
+                    else{
+                        $('#btnOnOff').html('yazi OFF')
+                                            .removeClass('btn-success')
+                                            .addClass('btn-danger');
+                        yaziGorunur = true;
+                    }
+                });
+            });
+        </script>
+        <div class="row">
+        <div style="margin: 10px 20px;" class="col-md-6">
+            <button id="btnKareHide" class="btn btn-outline-primary">Kareyi sakla</button>
+            <button id="btnKareShow" class="btn btn-outline-success">Kareyi goster</button>
+            <button id="btnKareAzalt" class="btn btn-outline-success">Kareyi yari yariya saydam yap</button>
+        <div style="width: 50px;height: 50px;background-color: aqua;" id="kareDiv">
+        </div>
+        </div>
+        <hr/>
+        <script>
+            $('#btnKareAzalt').click(function(){
+                $('#kareDiv').fadeTo(1000, 0.5);
+            });
+            $('#btnKareHide').click(function(){
+                $('#kareDiv').fadeOut(1200);
+            });
+            $('#btnKareShow').click(function(){
+                $('#kareDiv').fadeIn(300);
+                // eger tek buton ile acip kapatmak isteseydik:
+                //$('#kareDiv').fadeToggle(300);
+            });
+        </script>
+        <div style="margin:10px 20px;" class="col-md-6">
+            <a href="" id="linkButonHide" class="btn btn-outline-primary">Sakla</a>
+            <a href="" id="linkButonShow" class="btn btn-outline-primary">Goster</a>
+        <div id="kareDiv2" style="width: 50px;height: 50px;background-color: chartreuse;"></div>
+        </div>
+    </div>
+        <script>
+            $('#linkButonHide').click(function(e){
+                e.preventDefault();
+                $('#kareDiv2').slideDown(1000);
+            });
+            $('#linkButonShow').click(function(e){
+                e.preventDefault();
+                $('#kareDiv2').slideUp(1200);
+            });
+        </script>
+        <hr/>
+        <button type="button" class="btn btn-outline-danger" id="btnChange">degistir</button>
+        <div style="width: 200px;height: 100px;">
+            <div id="kare3" style="width: 50px;height: 50px;background-color:coral;"></div>
+        </div>
+        <script>
+            $('#btnChange').click(function(){
+                $('#kare3').animate({
+                    'margin-left': '+=30px',
+                    opacity: '-=0.2',
+                    height: '-=20px',
+                    width: '+=100px'
+                }, 2000);
+            })
+        </script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    </body>
+</html>
